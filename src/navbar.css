@@ -1,0 +1,27 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: block;
+    background-color: black;
+  
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .nav-menu{
+    color: inherit;
+    text-decoration: inherit;
+    display: block;
+    padding: 18px 60px;
+  }
