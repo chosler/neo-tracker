@@ -35,3 +35,11 @@
   margin-right: auto;
   width: 50%;
 }
+
+.comment-container {
+  display: block;
+}
+
+.comment-card {
+  display: inline;
+}

@@ -17,7 +17,7 @@ class App extends React.Component{
   }
 
   componentDidMount(){
-    Promise.all([fetch('http://localhost:3000/api/v1/near_earth_objects'), fetch('http://localhost:3000/api/v1/users/3'), fetch('http://localhost:3000/api/v1/user_tracked_objects')])
+    Promise.all([fetch('http://localhost:3000/api/v1/near_earth_objects'), fetch('http://localhost:3000/api/v1/users/7'), fetch('http://localhost:3000/api/v1/user_tracked_objects')])
     .then(([res1, res2, res3]) => {
       return Promise.all([res1.json(), res2.json(), res3.json()])
     })
