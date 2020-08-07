@@ -17,7 +17,7 @@ class App extends React.Component{
   }
 
   componentDidMount(){
-    Promise.all([fetch('http://localhost:3000/api/v1/near_earth_objects'), fetch('http://localhost:3000/api/v1/users/6'), fetch('http://localhost:3000/api/v1/user_tracked_objects')])
+    Promise.all([fetch('http://localhost:3000/api/v1/near_earth_objects'), fetch('http://localhost:3000/api/v1/users/3'), fetch('http://localhost:3000/api/v1/user_tracked_objects')])
     .then(([res1, res2, res3]) => {
       return Promise.all([res1.json(), res2.json(), res3.json()])
     })
@@ -30,16 +30,35 @@ class App extends React.Component{
     })
   }
 
+  updateTracked = (newTracked) => {
+    console.log(newTracked);
+    this.setState({
+      tracked: [...this.state.tracked, newTracked]
+    })
+  }
+
+  removeTracked = (id) => {
+    fetch(`http://localhost:3000/api/v1/user_tracked_objects/${id}`, {
+            method: 'DELETE',
+        })
+    
+    let newTracked = this.state.tracked.filter(obj=> obj.id !== parseInt(id))
+      this.setState({tracked: newTracked})
+  }
+
 
   render(){
-    console.log(this.state.tracked);
+    console.log(this.state);
+    // let trackedIds = this.state.tracked.map(neo => neo.neo_id)
+    // let trackedObjs = this.state.neos.filter(neo => neo.id === trackedIds)
+    
     return (
       <div className="App">
-        <NavBar />
+        <NavBar userId={this.state.currentUser.id}/>
         <Switch>
-        <Route path='/users/:userId' render={(routerProps)=> <UserPage user={this.state.currentUser} tracked={this.state.tracked} {...routerProps}/>} />
+        <Route path='/users/:id' render={(routerProps)=> <UserPage user={this.state.currentUser} tracked={this.state.tracked} removeTracked={this.removeTracked} {...routerProps}/>} />
         <Route path='/neos/:id' render={(routerProps)=><ObjPage {...routerProps} obj={this.state.currentObj}/>}/>
-        <Route path='/neos' render={(routerProps)=><NeoIndex {...routerProps} neos={this.state.neos} />}/>
+        <Route path='/neos' render={(routerProps)=><NeoIndex {...routerProps} neos={this.state.neos} user={this.state.currentUser} updateTracked={this.updateTracked} tracked={this.state.tracked}/>}/>
         <Route exact path='/' render={()=> <Home />} />
         </Switch>
       </div>
