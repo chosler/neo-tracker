@@ -29,6 +29,16 @@ const ObjCard = props => {
             <h2>Name: {props.neo.name}</h2>
             <button onClick={() => props.push(`/neos/${props.neo.id}`)}>Details</button>
             <button onClick={handleClick}>Track</button>
+            <br></br>
+            <h3>Comments</h3>
+            <div className='comment-container'>
+            {props.allComments.filter(comment => comment.near_earth_object.id === props.neo.id).map(comment => 
+                    <div className='comment-card' key={comment.id}>
+                        <h4> </h4><p>{comment.comm_content}</p>
+                    </div>
+                )
+            }
+            </div>
         </div>
     )
 }

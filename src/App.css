@@ -15,11 +15,23 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 80%;
+}
+
+.starBox {
+  width: 500px;
+  height: 500px;
 }
 
 .home {
   padding-top: 50px;
+}
+
+.home-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 .profile-card {
@@ -43,3 +55,4 @@
 .comment-card {
   display: inline;
 }
+

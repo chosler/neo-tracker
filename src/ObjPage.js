@@ -1,4 +1,6 @@
 import React from 'react';
+// import Spacekit from './js/spacekit';
+
 
 class ObjPage extends React.Component{
 
@@ -13,7 +15,26 @@ class ObjPage extends React.Component{
         .then(obj => this.setState({
             obj: obj
         }))
-    }
+        const viz = new window.Spacekit.Simulation(this.starContainer, {
+            basePath: 'https://typpo.github.io/spacekit/src',
+          });
+          
+          viz.createSkybox(window.Spacekit.SkyboxPresets.NASA_TYCHO);
+
+// Create our first object - the sun - using a preset space object.
+viz.createObject('sun', window.Spacekit.SpaceObjectPresets.SUN);
+
+// Then add some planets
+viz.createObject('mercury', window.Spacekit.SpaceObjectPresets.MERCURY);
+viz.createObject('venus', window.Spacekit.SpaceObjectPresets.VENUS);
+viz.createObject('earth', window.Spacekit.SpaceObjectPresets.EARTH);
+viz.createObject('mars', window.Spacekit.SpaceObjectPresets.MARS);
+viz.createObject('jupiter', window.Spacekit.SpaceObjectPresets.JUPITER);
+viz.createObject('saturn', window.Spacekit.SpaceObjectPresets.SATURN);
+viz.createObject('uranus', window.Spacekit.SpaceObjectPresets.URANUS);
+viz.createObject('neptune', window.Spacekit.SpaceObjectPresets.NEPTUNE);
+          };
+    
 
     render(){
         console.log(this.state);
@@ -30,6 +51,9 @@ class ObjPage extends React.Component{
                     </div> 
                 : <div>Loading...</div>
                 }
+                <div>
+                    <div className='starBox' ref={el => this.starContainer = el} />
+                </div>
             </>
         )
     }

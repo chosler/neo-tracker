@@ -8,7 +8,7 @@
     background-color: black;
   
     font-family: 'Raleway', sans-serif;
-    font-size: 20px;
+    font-size: 16px;
     color: white;
     text-decoration: none;
     font-weight: bolder;
@@ -23,5 +23,5 @@
     color: inherit;
     text-decoration: inherit;
     display: block;
-    padding: 18px 60px;
+    padding: 6px 40px;
   }

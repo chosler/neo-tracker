@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import UserRoutes from './UserRoutes';
 
 const NavBar = (props) => {
     return(
@@ -7,7 +8,7 @@ const NavBar = (props) => {
             <Link to="/" className='nav-menu'>Home</Link>
             <Link to="/neos" className='nav-menu'>Near Earth Objects</Link>
             <Link to={`/users/${props.userId}`} className='nav-menu'>My Tracked Objects</Link>
-            
+            <UserRoutes logout={props.logout} currentUser={props.currentUser}/>
         </div>
     )
 }

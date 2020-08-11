@@ -7,27 +7,31 @@ import NeoIndex from './NeoIndex';
 import NavBar from './NavBar';
 import ObjPage from './ObjPage';
 import UserPage from './UserPage';
+import Login from './Login';
+import Signup from './Signup';
 
 class App extends React.Component{
 
   state = {
     neos: [],
-    currentUser: [],
+    currentUser: null,
+    userId: null,
     tracked: [],
   }
 
   componentDidMount(){
-    Promise.all([fetch('http://localhost:3000/api/v1/near_earth_objects'), fetch('http://localhost:3000/api/v1/users/7'), fetch('http://localhost:3000/api/v1/user_tracked_objects')])
-    .then(([res1, res2, res3]) => {
-      return Promise.all([res1.json(), res2.json(), res3.json()])
+    Promise.all([fetch('http://localhost:3000/api/v1/near_earth_objects'), fetch('http://localhost:3000/api/v1/user_tracked_objects')])
+    .then(([res1, res2]) => {
+      return Promise.all([res1.json(), res2.json()])
     })
-    .then(([data1, data2, data3]) => {this.setState({
-      neos: data1,
-      currentUser: data2
+    .then(([data1, data2]) => {this.setState({
+      neos: data1
     })
-    {let matched = data3.filter(data3 => data3.user_id === this.state.currentUser.id)
-      this.setState({tracked: matched})}
-    })
+    // {let matched = data2.filter(data3 => data2.user_id === this.state.currentUser.id)
+    //   this.setState({tracked: matched})
+    // }
+    }
+    )
   }
 
   updateTracked = (newTracked) => {
@@ -46,6 +50,33 @@ class App extends React.Component{
       this.setState({tracked: newTracked})
   }
 
+  setUser = (response) => {
+    this.setState({
+      currentUser: response.user,
+      userId: response.user.id
+    },
+     () => {
+      localStorage.setItem("token", response.token )
+      this.props.history.push("/neos")
+    })
+    fetch(`http://localhost:3000/api/v1/user_tracked_objects`)
+    .then(resp => resp.json())
+    .then(data => 
+      {let matched = data.filter(re => re.user.id === this.state.userId)
+        this.setState({tracked: matched})
+      })
+  }
+
+  logout = () => {
+    this.setState({
+      currentUser: null
+    }, () => {
+      localStorage.removeItem("token")
+      this.props.history.push("/login")
+    })
+  
+}
+
 
   render(){
     console.log(this.state);
@@ -54,11 +85,13 @@ class App extends React.Component{
     
     return (
       <div className="App">
-        <NavBar userId={this.state.currentUser.id}/>
+        <NavBar userId={this.state.userId} currentUser={this.state.currentUser} logout={this.logout}/>
         <Switch>
         <Route path='/users/:id' render={(routerProps)=> <UserPage user={this.state.currentUser} tracked={this.state.tracked} removeTracked={this.removeTracked} {...routerProps}/>} />
         <Route path='/neos/:id' render={(routerProps)=><ObjPage {...routerProps} obj={this.state.currentObj}/>}/>
         <Route path='/neos' render={(routerProps)=><NeoIndex {...routerProps} neos={this.state.neos} user={this.state.currentUser} updateTracked={this.updateTracked} tracked={this.state.tracked}/>}/>
+        <Route path='/login' render={(routerProps)=> <Login setUser={this.setUser} {...routerProps}/>}/>
+        <Route path='/signup' render={(routerProps)=> <Signup setUser={this.setUser} {...routerProps}/>}/>
         <Route exact path='/' render={()=> <Home />} />
         </Switch>
       </div>

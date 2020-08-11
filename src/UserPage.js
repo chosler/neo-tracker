@@ -50,11 +50,14 @@ class UserPage extends React.Component{
     render(){
     return(
         <>
+        {this.props.user ?
             <div className='profile-card'>
-                <h1>Welcome, {this.props.user.name}</h1>
-                <img className='profile-pic' src={this.props.user.profile_pic_url} alt='Nothing'/>
+                <h1>{this.props.user.name}</h1>
+                <img className='profile-pic' src={this.props.user.profile_pic_url} alt='Not Found'/>
                 <button>Edit User</button>
             </div>
+                    : <h3>{'You are not logged in!'}</h3>
+                }
             
                 <div>
                     <UserCard tracked={this.props.tracked} removeTracked={this.props.removeTracked} handleCommChange={this.handleCommChange} handleCommSubmit={this.handleCommSubmit} comment={this.state.comment} allComments={this.state.allComments}/>
