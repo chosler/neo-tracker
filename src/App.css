@@ -2,6 +2,14 @@
   text-align: center;
 }
 
+.neo-index {
+  margin-top: 80px;
+    /* margin-left: 80px; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .obj-card {
   display: block;
   border-style: solid;

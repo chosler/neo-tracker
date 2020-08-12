@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ObjCard = props => {
-    console.log(props);
+    // console.log(props);
     
     const handleClick = () => {
         if(props.tracked.map(track=> track.near_earth_object.id).includes(props.neo.id)){
