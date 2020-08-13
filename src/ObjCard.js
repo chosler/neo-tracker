@@ -1,4 +1,5 @@
 import React from 'react';
+import OrbitalDiagram from './OrbitalDiagram'
 
 const ObjCard = props => {
     // console.log(props);
@@ -25,8 +26,10 @@ const ObjCard = props => {
 
     return(
         <div className="obj-card">
-            <img className="obj-image" src='https://www.universetoday.com/wp-content/uploads/2017/08/twc_de_komet.jpg' alt='Asteroid'/>
+           
             <h2>Name: {props.neo.name}</h2>
+            <OrbitalDiagram name={props.neo.name}/>
+            <br/>
             <button onClick={() => props.push(`/neos/${props.neo.id}`)}>Details</button>
             <button onClick={handleClick}>Track</button>
             <br></br>

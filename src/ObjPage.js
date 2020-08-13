@@ -1,5 +1,6 @@
 import React from 'react';
 import StarMap from './StarMap';
+
 // import Spacekit from './js/spacekit';
 
 
@@ -18,6 +19,7 @@ class ObjPage extends React.Component{
         }))
         
   }
+  
 
     render(){
         console.log(this.state);
@@ -26,6 +28,7 @@ class ObjPage extends React.Component{
                 {this.state.obj ?
                     <div className='obj-page'>
                         <img src='https://i.gadgets360cdn.com/large/asteroid_nasa_1595068349067.jpg' alt='asteroid'/>
+                        
                         <h2>Name: {this.state.obj.name}</h2>
                         <h4>Hazardous: {this.state.obj.hazardous ? 'True' : 'False'}</h4>
                         <h4>Distance from Earth: {this.state.obj.dist_from_earth} AU</h4>
