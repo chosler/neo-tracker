@@ -7,7 +7,7 @@ const UserRoutes = props => {
         {props.currentUser ? 
         (<>
         <div>Welcome, {props.currentUser.name}</div>
-        <button onClick={props.logout}>Log Out</button>
+        <button className='log-out' onClick={props.logout}>Log Out</button>
         </>) :
         (<>
         <Link to="/login" className='nav-menu'>Login</Link>

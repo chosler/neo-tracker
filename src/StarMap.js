@@ -1,4 +1,5 @@
 import React from 'react';
+import EarthTexture from './earthtexture.jpg';
 
 class StarMap extends React.Component{
 
@@ -23,12 +24,47 @@ viz.createObject('sun', window.Spacekit.SpaceObjectPresets.SUN);
 
 viz.createObject('mercury', window.Spacekit.SpaceObjectPresets.MERCURY);
 viz.createObject('venus', window.Spacekit.SpaceObjectPresets.VENUS);
-viz.createObject('earth', Object.assign(window.Spacekit.SpaceObjectPresets.EARTH, { labelText: 'Earth' }));
+// viz.createObject('earth', Object.assign(window.Spacekit.SpaceObjectPresets.EARTH, { labelText: 'Earth' }));
 viz.createObject('mars', window.Spacekit.SpaceObjectPresets.MARS);
 viz.createObject('jupiter', window.Spacekit.SpaceObjectPresets.JUPITER);
 viz.createObject('saturn', window.Spacekit.SpaceObjectPresets.SATURN);
 viz.createObject('uranus', window.Spacekit.SpaceObjectPresets.URANUS);
 viz.createObject('neptune', window.Spacekit.SpaceObjectPresets.NEPTUNE);
+
+viz.createSphere('earth', {
+  textureUrl: EarthTexture,
+  radius: 0.03, // Exxagerate size
+  labelText: 'Earth',
+  ephem: window.Spacekit.EphemPresets.EARTH,
+  levelsOfDetail: [
+    {
+      radii: 0,
+      segments: 64,
+    },
+    {
+      radii: 30,
+      segments: 16,
+    },
+    {
+      radii: 60,
+      segments: 8,
+    },
+  ],
+  atmosphere: {
+    enable: true,
+    color: 0xc7c1a8,
+  },
+  rotation: {
+    enable: true,
+    lambdaDeg: 50,
+    betaDeg: -63,
+    period: 3.755067,
+    yorp: 1.9e-8,
+    phi0: 0,
+    jd0: 2443568.0,
+    speed: 1,
+  },
+});
 
 const ephem = new window.Spacekit.Ephem({
     epoch: this.props.obj.epo,

@@ -25,7 +25,7 @@ class NeoIndex extends React.Component{
         return(
             <>
             {this.props.neos.map(neo =>
-                <ObjCard key={neo.id} neo={neo} push={this.props.history.push} setCurrentObj={this.props.setCurrentObj} user={this.props.user} updateTracked={this.props.updateTracked} tracked={this.props.tracked} allComments={this.state.allComments}/>
+                <ObjCard key={neo.id} neo={neo} push={this.props.history.push} setCurrentObj={this.props.setCurrentObj} user={this.props.user} updateTracked={this.props.updateTracked} tracked={this.props.tracked} allComments={this.state.allComments}handleLike={this.handleLike} handleDislike={this.handleDislike}/>
                 )}
                 </>
         )
@@ -36,21 +36,83 @@ class NeoIndex extends React.Component{
         return(
             <>
             {hazObjs.map(neo =>
-                <ObjCard key={neo.id} neo={neo} push={this.props.history.push} setCurrentObj={this.props.setCurrentObj} user={this.props.user} updateTracked={this.props.updateTracked} tracked={this.props.tracked} allComments={this.state.allComments}/>
+                <ObjCard key={neo.id} neo={neo} push={this.props.history.push} setCurrentObj={this.props.setCurrentObj} user={this.props.user} updateTracked={this.props.updateTracked} tracked={this.props.tracked} allComments={this.state.allComments} handleLike={this.handleLike} handleDislike={this.handleDislike}/>
                 )}
             </>
         )
     }
+
+    handleLike = (id, likes) => {
+        if (this.props.user !== null){
+        fetch(`http://localhost:3000/api/v1/comments/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify({
+                likes: likes + 1
+            })
+            })
+            .then(resp => resp.json())
+            .then(updatedCom => {
+                    let updatedComArr = this.state.allComments.map(comment => {
+                        if(comment.id === updatedCom.id){
+                        return {...comment, likes: updatedCom.likes}
+                        }
+                        return comment
+                    })
+                    this.setState({allComments: updatedComArr})
+        
+            })
+        }
+        else{
+            alert('You must log in first')
+        }
+    }
+
+    handleDislike = (id, likes) => {
+        if (this.props.user !== null){
+        fetch(`http://localhost:3000/api/v1/comments/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify({
+                likes: likes - 1
+            })
+            })
+            .then(resp => resp.json())
+            .then(updatedCom => {
+                    let updatedComArr = this.state.allComments.map(comment => {
+                        if(comment.id === updatedCom.id){
+                        return {...comment, likes: updatedCom.likes}
+                        }
+                        return comment
+                    })
+                    this.setState({allComments: updatedComArr})
+        
+            })    
+        }
+        else{
+            alert('You must log in first')
+        }
+    }
     
     render(){
-        console.log(this.props.neos);
+        // console.log(this.props.neos);
     return(
         <div className="neo-index">
             {this.state.toggleFiltered ?
-            <button onClick={() => this.handleToggle()}>Un-Filter</button>
+            // <button onClick={() => this.handleToggle()}>Un-Filter</button>
+            <label className="switch"><input type="checkbox" id="togBtn" onClick={() => this.handleToggle()}/><div className="slider round"></div></label>
             :
-            <button onClick={() => this.handleToggle()}>Filter if Hazardous</button>
+            <label className="switch"><input type="checkbox" id="togBtn" onClick={() => this.handleToggle()}/><div className="slider round"></div></label>
+            // <button onClick={() => this.handleToggle()}>Filter if Hazardous</button>
             }
+            <br/>
+            <h4>Select Asteroids below to Track or Details for more information:</h4>
             {this.state.toggleFiltered ? this.showHaz() : this.showAll()}
         </div>
     )}

@@ -14,13 +14,20 @@ const UserCard = props => {
     const showHideCommForm = (id) => {
         setCommFormShow(prev => ({...prev, [id]: !prev[id]}))
     }
-        console.log(props);
+    
+    const imgArr = ['https://i.gadgets360cdn.com/large/asteroid_nasa_1595068349067.jpg', 'https://media4.s-nbcnews.com/j/newscms/2017_16/1968396/170418-asteroid-mn-0730_b2c1f54812269d7ea29e5890b0c2b173.fit-760w.jpg', 'https://www.snopes.com/tachyon/2017/01/NASA_asteroid_tw.jpg?resize=865,452', 'https://timesofindia.indiatimes.com/thumb/msid-77050464,width-1200,height-900,resizemode-4/.jpg']
+
+//    let image = imgArr[Math.floor(Math.random()*imgArr.length)]
+  const sample = (arr) => {
+    return arr[Math.floor(Math.random()*arr.length) | 0];
+  }    
+
     return(
         <>
         {props.tracked.map(obj =>
             
             <div className="obj-card" key={obj.id} >
-            <img className="obj-image" src='https://www.universetoday.com/wp-content/uploads/2017/08/twc_de_komet.jpg' alt='Asteroid'/>
+            <img className="obj-image" src={sample(imgArr)} alt='Asteroid'/>
             <h2>Name: {obj.near_earth_object.name}</h2>
             { detailsShown[obj.id] ?
             <>
@@ -30,29 +37,33 @@ const UserCard = props => {
             <h4>Diameter(min): {obj.near_earth_object.diameter_min} Km</h4>
             </>
             : null }
-            <button onClick={() => showHideDetails(obj.id)}>{detailsShown[obj.id] ? 'Hide Details' : 'Show Details'}</button>
-            <button id={obj.id} onClick={e => props.removeTracked(e.target.id)}>UnTrack</button>
+            <button className='index-detail' onClick={() => showHideDetails(obj.id)}>{detailsShown[obj.id] ? 'Hide Details' : 'Show Details'}</button>
+            <button className='index-track' id={obj.id} onClick={e => props.removeTracked(e.target.id)}>UnTrack</button>
             <br></br>
             <h3>Comments</h3>
             <div className='comment-container'>
             {props.allComments.filter(comment => comment.near_earth_object.id === obj.near_earth_object.id).map(comment => 
                     <div className='comment-card' key={comment.id}>
-                        <h4> </h4><p>{comment.comm_content}</p>
+                        
+                            <h4> {comment.user.user_name}</h4>
+                            <img className='show-profile-image' src={comment.user.profile_pic_url} alt="None"/>
+                        
+                        <p>{comment.comm_content}</p>
                     </div>
                 )
             }
             </div>
             { commFormShown[obj.id] ?
                 <form onSubmit={e => props.handleCommSubmit(e, obj.near_earth_object.id, obj.user.id)}>
-                    <label>
+                    <label className='comm-label'>
                     New Comment:
-                    <input type="text" value={props.comment} onChange={e => props.handleCommChange(e)} />
+                    <input className='comm-input' type="text" value={props.comment} onChange={e => props.handleCommChange(e)} />
                     </label>
-                    <input type="submit" value="Submit" />
+                    <input className='login-submit' type="submit" value="Submit" />
                 </form>
             : null
             }
-            <button onClick={() => showHideCommForm(obj.id)}>{commFormShown[obj.id] ? 'Hide Form' : 'Comment'}</button>
+            <button className='user-comm-btn' onClick={() => showHideCommForm(obj.id)}>{commFormShown[obj.id] ? 'Hide Form' : 'Comment'}</button>
         </div>
             )}
         </>

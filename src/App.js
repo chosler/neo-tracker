@@ -9,6 +9,7 @@ import ObjPage from './ObjPage';
 import UserPage from './UserPage';
 import Login from './Login';
 import Signup from './Signup';
+import AsterShape from './AsterShape';
 
 class App extends React.Component{
 
@@ -92,6 +93,7 @@ class App extends React.Component{
         <Route path='/neos' render={(routerProps)=><NeoIndex {...routerProps} neos={this.state.neos} user={this.state.currentUser} updateTracked={this.updateTracked} tracked={this.state.tracked}/>}/>
         <Route path='/login' render={(routerProps)=> <Login setUser={this.setUser} {...routerProps}/>}/>
         <Route path='/signup' render={(routerProps)=> <Signup setUser={this.setUser} {...routerProps}/>}/>
+        <Route path='/shape' render={(routerProps)=> <AsterShape {...routerProps}/>}/>
         <Route exact path='/' render={()=> <Home />} />
         </Switch>
       </div>

@@ -3,9 +3,9 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
+    height: 85px;
     display: block;
-    background-color: black;
+    background-color: #0B3D91;
   
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
@@ -17,6 +17,7 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-around;
+    z-index: 2;
   }
 
   .nav-menu{
@@ -25,3 +26,32 @@
     display: block;
     padding: 6px 40px;
   }
+  
+  .nav-home{
+    color: inherit;
+    text-decoration: inherit;
+    /* text-decoration-style: bold; */
+    display: block;
+    padding-left: 30px;
+    font-size: xx-large;
+  }
+
+  .log-out {
+    background-color: #FC3D21;
+  color: white;
+  border: 2px solid #FC3D21;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+  margin-top: 10px;
+}
+
+.log-out:hover {
+  background-color: white; 
+  color: black;
+}
+
+.logo {
+  height: 100px;
+  padding-top: 5px;
+}
+  

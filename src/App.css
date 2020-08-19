@@ -1,22 +1,40 @@
 .App {
   text-align: center;
+  /* background-color: lightskyblue; */
+  background-image: url('https://apod.nasa.gov/apod/image/1409/cocoonIC5146pelliccia.jpg');
+  color: white;
+}
+
+a {
+  color: greenyellow
+}
+
+.not-logged {
+  padding-top: 80px;
+  padding-bottom: 600px;
 }
 
 .neo-index {
   margin-top: 80px;
+  padding-top: 30px;
     /* margin-left: 80px; */
-    display: flex;
+    display: block;
     flex-direction: row;
     flex-wrap: wrap;
+    color: white;
 }
 
 .obj-card {
   display: block;
   border-style: solid;
-  border-color: black;
+  border-color: white;
+  border-radius: 8%;
   margin-top: 60px;
   padding-top: 50px;
   padding-bottom: 20px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .obj-image {
@@ -32,7 +50,9 @@
 }
 
 .home {
-  padding-top: 50px;
+  padding-top: 80px;
+  padding-bottom: 74px;
+  color: white;
 }
 
 .home-image {
@@ -53,7 +73,9 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  max-width: 150px;
+    border-radius: 30%;
+    padding-bottom: 20px;
 }
 
 .comment-container {
@@ -61,7 +83,8 @@
 }
 
 .comment-card {
-  display: inline;
+  display: inline-flex;
+  padding: 30px;
 }
 
 .sticky {
@@ -110,4 +133,256 @@
 
 .vis-status {
   color: #ccc;
+}
+
+.shape-page {
+  margin-top: 60px;
+  padding-top: 30px;
+}
+
+.user-profile-image {
+  display: inline-flex;
+  /* margin-left: 40px; */
+  margin-right: auto;
+  max-width: 10%;
+  max-height: 10%;
+}
+
+.show-profile-image {
+  display: inline-flex;
+  margin-left: 40px;
+  margin-right: auto;
+  max-width: 10%;
+  max-height: 10%;
+}
+
+.aster-pic {
+  width: 50%;
+  padding-top: 100px;
+}
+
+.obj-page {
+  padding-bottom: 50px
+}
+
+.shape-page {
+  padding-bottom: 140px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 34px;
+  margin-right: 1150px;
+  z-index: 1;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ca2222;
+  -webkit-transition: .4s;
+  transition: .4s;
+   border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2ab934;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(115px);
+}
+
+.slider:after
+{
+ content:'Unfiltered';
+ color: white;
+ display: block;
+ position: absolute;
+ transform: translate(-50%,-50%);
+ top: 50%;
+ left: 50%;
+ font-size: 10px;
+ font-family: Verdana, sans-serif;
+}
+
+input:checked + .slider:after
+{  
+  content:'Hazardous';
+}
+
+.index-detail {
+  margin: 10px;
+  background-color: blue;
+  color: white;
+  border: 2px solid blue;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+
+.index-detail:hover {
+  /* margin: auto; */
+  background-color: white; 
+  color: black;
+}
+
+.index-track {
+  margin: 10px;
+  background-color: blue;
+  color: white;
+  border: 2px solid blue;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+
+.index-track:hover {
+  /* margin: auto; */
+  background-color: white; 
+  color: black;
+}
+
+.user-comm-btn {
+  background-color: blue;
+  color: white;
+  border: 2px solid blue;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+  margin-top: 10px;
+}
+
+.user-comm-btn:hover {
+  background-color: white; 
+  color: black;
+}
+
+.comm-input {
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.comm-label {
+  font-size: 20px;
+    font-weight: bold;
+}
+
+.comm-con {
+  margin: auto;
+}
+
+.like-btn {
+  margin: auto;
+  max-height: 25px;
+  background-color: green;
+  color: white;
+  border: 2px solid green;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+
+.like-btn:hover {
+  margin: auto;
+  background-color: white; 
+  color: black;
+}
+
+.dislike-btn {
+  margin: auto;
+  max-height: 25px;
+  background-color: red;
+  color: white;
+  border: 2px solid red;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+}
+
+.dislike-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.likes {
+  margin: auto;
+}
+
+.user-name {
+  margin: auto;
+}
+
+.login-container {
+  padding-bottom: 600px;
+    padding-top: 100px;
+}
+
+.signin-form {
+  display: inline-flex;
+    padding: 10px;
+}
+
+.signin-input {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.login-submit {
+  border-radius: 6px;
+  font-size: 20px;
+  background-color: blue;
+  color: white;
+  border: 2px solid blue;
+}
+
+.login-submit:hover {
+  background-color: white;
+  color: black;
+}
+
+.edit-user {
+    background-color: #FC3D21;
+  color: white;
+  border: 2px solid #FC3D21;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+  margin-top: 10px;
+}
+
+.edit-user:hover {
+  background-color: white; 
+  color: black;
+}
+
+.signup-container {
+  padding-top: 100px;
+  padding-bottom: 600px;
+}
+
+.inst {
+  font-style: italic;
 }

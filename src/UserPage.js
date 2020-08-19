@@ -1,5 +1,6 @@
 import React from 'react';
 import UserCard from './UserCard';
+import { Link } from 'react-router-dom';
 
 
 class UserPage extends React.Component{
@@ -54,9 +55,15 @@ class UserPage extends React.Component{
             <div className='profile-card'>
                 <h1>{this.props.user.name}</h1>
                 <img className='profile-pic' src={this.props.user.profile_pic_url} alt='Not Found'/>
-                <button>Edit User</button>
+                <button className='edit-user' >Edit User</button>
             </div>
-                    : <h3>{'You are not logged in!'}</h3>
+                    : 
+                    <div className='not-logged'>
+                    <h3>{'You are not logged in!'}</h3>
+                    <Link to='/login'>Login</Link>
+                    <br/><br/>
+                    <Link to='/signup'>Signup</Link>
+                    </div>
                 }
             
                 <div>

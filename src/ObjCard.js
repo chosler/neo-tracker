@@ -2,7 +2,7 @@ import React from 'react';
 import OrbitalDiagram from './OrbitalDiagram'
 
 const ObjCard = props => {
-    // console.log(props);
+    console.log(props);
     
     const handleClick = () => {
         if(props.tracked.map(track=> track.near_earth_object.id).includes(props.neo.id)){
@@ -30,14 +30,19 @@ const ObjCard = props => {
             <h2>Name: {props.neo.name}</h2>
             <OrbitalDiagram name={props.neo.name}/>
             <br/>
-            <button onClick={() => props.push(`/neos/${props.neo.id}`)}>Details</button>
-            <button onClick={handleClick}>Track</button>
+            <button className='index-detail' onClick={() => props.push(`/neos/${props.neo.id}`)}>Details</button>
+            <button className='index-track' onClick={handleClick}>Track</button>
             <br></br>
             <h3>Comments</h3>
-            <div className='comment-container'>
+            <div>
             {props.allComments.filter(comment => comment.near_earth_object.id === props.neo.id).map(comment => 
                     <div className='comment-card' key={comment.id}>
-                        <h4> </h4><p>{comment.comm_content}</p>
+                            <h4 className='user-name'> {comment.user.user_name}</h4>
+                            <img className='user-profile-image' src={comment.user.profile_pic_url} alt="None"/>
+                        <p className='comm-con' >{comment.comm_content}</p>
+                        <button className='like-btn' onClick={()=>props.handleLike(comment.id, comment.likes)}>Like</button>
+                        <button className='dislike-btn' onClick={()=>props.handleDislike(comment.id, comment.likes)}>Dislike</button>
+                        <p className='likes'>Likes: {comment.likes}</p>
                     </div>
                 )
             }
