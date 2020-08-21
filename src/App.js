@@ -80,7 +80,7 @@ class App extends React.Component{
 
 
   render(){
-    console.log(this.state);
+    
     // let trackedIds = this.state.tracked.map(neo => neo.neo_id)
     // let trackedObjs = this.state.neos.filter(neo => neo.id === trackedIds)
     

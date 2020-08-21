@@ -12,15 +12,13 @@ class AsterShape extends React.Component{
             startPaused: false,
           });
           
-          // Create a skybox using NASA TYCHO artwork.
-          viz.createSkybox(window.Spacekit.SkyboxPresets.NASA_TYCHO);
-        //   viz.createStars();
           
-          // Add some light.
+          viz.createSkybox(window.Spacekit.SkyboxPresets.NASA_TYCHO);
+          
           viz.createLight();
           viz.createAmbientLight();
           
-          // Create a shape object
+          
           const obj = viz.createShape('Bennu', {
             shape: {
               shapeUrl: process.env.PUBLIC_URL + 'Bennu/bennu.obj',
@@ -36,8 +34,10 @@ class AsterShape extends React.Component{
                 speed: 0.5,
               },
           });
+
           
-          viz.zoomToFit(obj, 1 /* zoom offset */);  
+          
+          viz.zoomToFit(obj, 1);  
     }
     render(){
     return(

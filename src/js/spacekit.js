@@ -60760,4 +60760,3 @@ var Spacekit = (function (exports) {
 	return exports;
 
 }({}));
-export default Spacekit;
