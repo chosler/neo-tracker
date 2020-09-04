@@ -1,8 +1,6 @@
 import React from 'react'
 
 const OrbitalDiagram = props => {
-    // console.log(props);
-    
     
     const renderDiagram= name => {
         switch(name) {

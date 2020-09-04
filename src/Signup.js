@@ -44,7 +44,7 @@ class Signup extends React.Component{
   }
 
     render(){
-        console.log(this.state);
+        
     return(
         <div className="signup-container">
                 <h2 className="sign-up-title">SIGN UP</h2>
@@ -59,7 +59,7 @@ class Signup extends React.Component{
                     <button className="signup-submit" type="submit">Sign Up</button>
                 </form>
             </div>
-    )
+      )
     }
 }
 

@@ -21,7 +21,7 @@ const ObjCard = props => {
         })
         .then(resp => resp.json())
         .then(data => props.updateTracked(data))
-    }
+        }
     }
 
     return(

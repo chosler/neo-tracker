@@ -33,7 +33,7 @@ viz.createObject('neptune', window.Spacekit.SpaceObjectPresets.NEPTUNE);
 
 viz.createSphere('earth', {
   textureUrl: EarthTexture,
-  radius: 0.03, // Exxagerate size
+  radius: 0.03, 
   labelText: 'Earth',
   ephem: window.Spacekit.EphemPresets.EARTH,
   levelsOfDetail: [
@@ -110,13 +110,12 @@ document.querySelectorAll('.vis-controls__slower').forEach(function(elt) {
       viz.setDate(new Date(prompt('Enter a date in the format YYYY-mm-dd.', '2000-01-01')));
     };
   });
-viz.onTick = function() {
-    document.querySelectorAll('.vis-status').forEach(function(elt) {
-      elt.innerHTML = viz.getDate().toLocaleString() + '';
-    });
+  viz.onTick = function() {
+      document.querySelectorAll('.vis-status').forEach(function(elt) {
+        elt.innerHTML = viz.getDate().toLocaleString() + '';
+      });
       };
-console.log(viz.getDate().toLocaleString());
-// debugger
+
     }
 
     render(){

@@ -26,7 +26,6 @@ class UserPage extends React.Component{
 
     handleCommSubmit = (e, neoId, userId) => {
         e.preventDefault()
-        // console.log(this.state.comment);
         fetch('http://localhost:3000/api/v1/comments', {
             method: 'POST',
             headers: {

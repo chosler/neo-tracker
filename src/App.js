@@ -28,9 +28,6 @@ class App extends React.Component{
     .then(([data1, data2]) => {this.setState({
       neos: data1
     })
-    // {let matched = data2.filter(data3 => data2.user_id === this.state.currentUser.id)
-    //   this.setState({tracked: matched})
-    // }
     }
     )
   }
@@ -80,10 +77,6 @@ class App extends React.Component{
 
 
   render(){
-    
-    // let trackedIds = this.state.tracked.map(neo => neo.neo_id)
-    // let trackedObjs = this.state.neos.filter(neo => neo.id === trackedIds)
-    
     return (
       <div className="App">
         <NavBar userId={this.state.userId} currentUser={this.state.currentUser} logout={this.logout}/>

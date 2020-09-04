@@ -101,15 +101,12 @@ class NeoIndex extends React.Component{
     }
     
     render(){
-        // console.log(this.props.neos);
     return(
         <div className="neo-index">
             {this.state.toggleFiltered ?
-            // <button onClick={() => this.handleToggle()}>Un-Filter</button>
             <label className="switch"><input type="checkbox" id="togBtn" onClick={() => this.handleToggle()}/><div className="slider round"></div></label>
             :
             <label className="switch"><input type="checkbox" id="togBtn" onClick={() => this.handleToggle()}/><div className="slider round"></div></label>
-            // <button onClick={() => this.handleToggle()}>Filter if Hazardous</button>
             }
             <br/>
             <h4>Select Asteroids below to Track or Details for more information:</h4>

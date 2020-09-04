@@ -248,7 +248,6 @@ input:checked + .slider:after
 }
 
 .index-detail:hover {
-  /* margin: auto; */
   background-color: white; 
   color: black;
 }
@@ -263,7 +262,6 @@ input:checked + .slider:after
 }
 
 .index-track:hover {
-  /* margin: auto; */
   background-color: white; 
   color: black;
 }
