@@ -8,7 +8,7 @@ NEO-Tracker is a Javascript web application designed to show basic information a
 
 1. Download the backend of the app found here: [NEO-Tracker--BackEnd](https://github.com/chosler/neo-tracker--backend)
 
-2. Run `bundle install` and `rails start` to start the backend Ruby on Rails API.
+2. Run `bundle install` and `rails s` to start the backend Ruby on Rails API.
 
 3. Run `npm install` and `npm start` to start the frontend.
 
