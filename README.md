@@ -4,7 +4,7 @@
 
 NEO-Tracker is a Javascript web application designed to show basic information about Near Earth Objects (NEOs), their orbital paths visualized in 3D, and includes one example of a fully 3D rendered asteroid.
 
-### How to install:
+### How to install
 
 1. Download the backend of the app found here: [NEO-Tracker--BackEnd](https://github.com/chosler/neo-tracker--backend)
 
